@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Search Puzzle</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a playful, game-like font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+        }
+        /* Custom scrollbar for game aesthetic */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e5e7eb;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 5px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col items-center p-4 transition-colors duration-300">
+    <!-- Header -->
+    <header class="mb-6 text-center">
+        <h1 class="text-3xl md:text-4xl text-green-500 dark:text-blue-400 drop-shadow-lg">Word Search Quest</h1>
+        <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2">Crack the Puzzle Like a Pro!</p>
+    </header>
+
+    <!-- Dark Mode Toggle -->
+    <button id="themeToggle" class="fixed top-4 right-4 p-2 bg-green-500 dark:bg-blue-500 text-white rounded-full hover:bg-green-600 dark:hover:bg-blue-600 transition-colors shadow-lg" title="Toggle Dark Mode">
+        <svg id="themeIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path id="sunIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path id="moonIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" class="hidden"></path>
+        </svg>
+    </button>
+
+    <!-- Form -->
+    <form id="wordSearchForm" class="w-full max-w-lg bg-white dark:bg-gray-700 p-6 rounded-lg shadow-xl grid grid-cols-1 gap-4">
+        <div>
+            <label for="matrix" class="block text-sm text-gray-700 dark:text-gray-200 mb-2">Matrix (14x14, comma-separated)</label>
+            <textarea id="matrix" rows="5" class="w-full p-3 border-2 border-green-300 dark:border-blue-300 rounded-lg bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-blue-500 transition-colors" required></textarea>
+        </div>
+        <div>
+            <label for="words" class="block text-sm text-gray-700 dark:text-gray-200 mb-2">Words (one per line)</label>
+            <textarea id="words" rows="5" class="w-full p-3 border-2 border-green-300 dark:border-blue-300 rounded-lg bg-gray-50 dark:bg-gray-600 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-blue-500 transition-colors" required></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-green-500 dark:bg-blue-500 text-white rounded-lg hover:bg-green-600 dark:hover:bg-blue-600 transition-colors shadow-md text-sm">Solve Puzzle</button>
+    </form>
+
+    <!-- Results -->
+    <section class="w-full max-w-lg mt-6">
+        <h2 class="text-xl md:text-2xl text-green-500 dark:text-blue-400 mb-4">Results</h2>
+        <ul id="results" class="bg-white dark:bg-gray-700 rounded-lg shadow-xl p-4 space-y-2"></ul>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
